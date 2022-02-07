@@ -16,6 +16,16 @@ function deleteToDo(event){
 
     const li = event.target.parentElement; // delete 하고 싶은 element
     li.remove(); // element제거
+    // console.log(typeof li.id);
+    /**
+     *   ** HTML에서 id => 숫자를 가질 수 없다.
+     *      즉, String만 가능.
+     *      id="12345" 했다 하더라도 string으로 받아들인다.
+     *      typeof X => string
+     *       
+     */
+    toDos = toDos.filter(toDoId => toDoId.id !== Number(li.id)); // parseInt()보다 Number()가 속도가 더 빠름.
+    saveToDos();
 
     console.dir(event.target.parentElement.innerText); // event 발생한 타켓 text를 가져온다.
     // console.log(event.target); => button
@@ -27,8 +37,9 @@ function deleteToDo(event){
 function paintToDo(newTodo){
     //console.log("good",newTodo) => good ~~ ,를 사용하면 이렇게 문자열 연결된것 처럼 출력된다.
     const li = document.createElement("li"); 
+    li.id = newTodo.id; // **li의 요소 id가 추가된다.
     const span = document.createElement("span");
-    span.innerText = newTodo;
+    span.innerText = newTodo .text;
     const button = document.createElement("button");
     button.innerHTML = "X";
     button.addEventListener("click",deleteToDo);
@@ -50,9 +61,13 @@ function paintToDo(newTodo){
 function handleToDoSubmit(event){
     event.preventDefault();
     const newTodo = toDoInput.value;
-    toDos.push(newTodo);    
     toDoInput.value = "";
-    paintToDo(newTodo);
+    const newTodoObj={
+        text:newTodo,
+        id: Date.now()
+    }
+    toDos.push(newTodoObj);    
+    paintToDo(newTodoObj);
     saveToDos();
     
 }
@@ -66,7 +81,20 @@ if(savedToDos){ // localStorage의 key를 지울경우 null로 나오기 때문.
     const parsedToDos = JSON.parse(savedToDos);
     toDos = parsedToDos; // refresh할때마다 상단에서 array를 초기화했기 때문에 기존것이 저장안됨. localStorage가 null이 아니면 내부값을 array에 저장.
     // parsedToDos.forEach(sayHello);  -> function sayHello(item){} 
-    // parsedToDos.forEach((item)=>console.log("this item :",item)); // arrow function
-    parsedToDos.forEach(paintToDo); // function paintToDo() JS가 array item을 forEach해서 매개변수로 넣어줌.
+    // parsedToDos.forEach((item))  =>console.log("this item :",item)); // arrow function
+    parsedToDos.forEach(paintToDo); // function paintToDo() JS가 array item을 forEach해서 매개변수로 넣어줌. -> painToDo를 parsedToDos배열의 요소마다 실행.
+    
 
 }
+
+/**
+ *  filter: true만 모아서 새로운 array에 저장.
+ *  const friut = [{name:"apple",color:"red"},{name:"banana",color:"yellow"}];
+ *  friut.filter(item=> item.name !== 'apple');
+ *  => [{name:"banana",color:"yellow"}]
+ * 
+ *  const score = [90,100,80,97,99]
+ *  function testing(item){return item > 95;}
+ *  score.filter(testing) => [100,97,99]
+ * 
+ */
