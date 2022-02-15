@@ -94,3 +94,56 @@
     console.log(others.shift()); // ['man']  -> remove the first element of array
   }
   restParameter('dong','hyun','good','job','man');
+
+  
+  /** arrow function  
+   * 
+   *  arguments가 없다.
+  */
+  const getArrow = (number) => {
+    return number *2;
+  }
+
+  const myBtn = document.querySelector('#button');
+
+  myBtn.addEventListener('click', () => {
+    console.log('button click ');
+  });
+
+  const getArrow1 = number => number*2; // parameter가 1개일 경우 ()생략가능, 함수 내부에 return문 한줄만 있는 경우 return 생략가능.  
+  const getArrow2 = ()=> ({name:"dong"});  // 리턴문 한줄이 객체인 경우 ()로 묶어준다.
+  console.log(getArrow1(2));
+
+
+  /** this 
+   *  
+   *  method를 호출한 객체를 가리키는 키워드
+   * 
+  */
+  function getFullName(){
+    return `${this.firstName} ${this.lastName}`;
+  }
+  const teacher = {
+    firstName: 'donghyun',
+    lastName:'kim',
+    getFullName:getFullName
+  };
+  const student = {
+    firstName:'messi',
+    lastName:'lionel',
+    getFullName:getFullName
+  }
+  /** 어떤 객체의 method를 호출할 경우 method를 호출한 객체에 this가 담긴다. */
+  console.log(teacher.getFullName()); 
+  console.log(student.getFullName());
+  // function testA(){console.log(this);}  testA(); -> window  (this만 사용하거나, 예시처럼 method를 선언만 하고 호출하는 경우)
+
+  /** 
+   * arrow function this
+   * 
+   * arrow function에서의 ***this의 값은 arrow function이 선언되기 직전에 유효한 this값과 똑같은 값을 가지고서 동작함. (window)
+   * => * 일반 함수처럼 호출한 대상에 따라 상대적으로 변하지 않음.
+   * 
+   *  method를 생성할 때 this에 method를 호출한 객체를 가리키고 싶으면 일반 함수를 활용!
+   * 
+   * */
