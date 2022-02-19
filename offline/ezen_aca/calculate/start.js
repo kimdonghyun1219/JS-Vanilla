@@ -3,7 +3,6 @@
  *  @response: start.html
 */
 
-// 스렉트 js라이브러리
 
 /** JS %d, %s, %o, %j  => number, string, object, json */
 
@@ -37,7 +36,7 @@ console.log(resultThree);
  *  연습문제 
  *  @question : 4
  *  @Resource : ezen
- *  @data : 2022-02-19 
+ *  @date : 2022-02-19 
  * 
 */
 
