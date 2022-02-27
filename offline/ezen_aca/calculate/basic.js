@@ -178,20 +178,11 @@
 
     let number = 2; // 1 or 2
     
-    if(number === 1){
-        for(let m=2; m<9; m+=2){
-            for(let n=1; n<10; n++){
-                console.log(`${m} * ${n} = ${m*n}`);
-            }
-        }
-    } else if(number === 2){
-        for(let m=3; m<10; m+=2){
-            for(let n=1; n<10; n++){
-                console.log(`${m} * ${n} = ${m*n}`);
-            }
+    for(let i=4; i<10; i+=2){
+        for(let j=1; j<10; j++){
+            console.log(`${i} * ${j} = ${i*j}`);
         }
     }
-
 
     /** 
      *   2중 for문을 사용하여 *이 1개씩 감소하도록 출력.
