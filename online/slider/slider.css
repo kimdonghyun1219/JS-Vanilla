@@ -1,0 +1,7 @@
+/** sldier css */
+
+html, body{margin:0; padding:0;}
+
+#slider-wrap{width:250px; position: relative; margin: 0 auto;}
+#slider-box{width: 100%; overflow: hidden; display:table; table-layout:fixed;}
+.slider-item{width: 200px; height: 150px; display: table-cell;}
