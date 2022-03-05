@@ -300,18 +300,28 @@
             {data: '0201', active: 299},   
         ];
 
-        let totalActive = 0, avgActive=0       
+        function covidPrint(covidArr){
 
-        covid19.forEach((val,idx)=>{
+            let totalActive = 0, avgActive=0, highDate='', highActive=0;       
 
-            totalActive += val.active;
+            covidArr.forEach((val,idx)=>{
 
+                totalActive += val.active;
 
-        });
+                if(val.active > highActive) {
 
-        avgActive = ( totalActive / covid19.length).toFixed(2);
-        console.log(`누적 확진자 수: ${totalActive}명 \t 평균 확진자 수: ${avgActive}`);
+                    highDate = val.data;
+                    highActive = val.active;
 
+                }
+            });
+
+            avgActive = ( totalActive / covid19.length).toFixed(2);
+            console.log(`누적 확진자 수: ${totalActive}명 \n 평균 확진자 수: ${avgActive}`);
+            console.log(`확진자가 가장 많이 나타난 날: ${highDate}`);
+        }
+
+        covidPrint(covid19);
         
 
     /** 
