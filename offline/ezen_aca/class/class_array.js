@@ -230,7 +230,6 @@ for(let i=0; i<lotto.length; i++){
 console.log(lotto);
 
 
-
 /*
     문제8.
     수많은 마라톤 선수들이 마라톤에 참여하였습니다. 단 한 명의 선수를 제외하고는 모든 선수가 마라톤을 완주하였다.
@@ -244,4 +243,26 @@ console.log(lotto);
         - 참가자 중에는 동명이인이 있을 수 없다.
 
 */
+
+const participant = new Array(100000);
+const completion = new Array(99999);
+
+function solution(participant, completion){
+    let notGoal = ``;
+
+    participant.some((val,idx)=>{
+        if(!completion.includes(val)){
+            notGoal = val;
+            return true;
+        }
+    })
+
+    console.log(`완주하지 못한 사람은 "${notGoal}" 입니다.`);
+}
+
+console.log(
+    solution([`dong`, `hyun`, `kim`, `lee`, `park`, `joo`],
+             [`dong`, `hyun`, `kim`, `park`,'joo']
+    )
+);
 
