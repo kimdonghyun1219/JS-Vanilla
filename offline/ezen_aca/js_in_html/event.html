@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            :root{--color-border: 3px solid rgb(10,10,10);}
+            .box{
+                padding: 30px 0;
+                text-align: center;
+                cursor: pointer;
+                border: var(--color-border);
+                font-size: 1.3rem;
+            }
+            .mouse-div{background-color: rgb(250, 171, 230);}
+            .what-key{border: var(--color-border); background-color: bisque;}
+            .key-div{background-color: rgb(137, 159, 235);}
+            .key-input{border: var(--color-border);}
+
+            .extends-div{height: 500px; background:rgb(200, 109, 103)}
+            .scroll-div{border: var(--color-border);}
+            .add-div{height: 700px; background: linear-gradient(0deg, rgb(123,103,201) 0, rgb(189,201,172) 100%);}
+        </style>
+    </head>
+    <body>
+        <div class="mouse-div box"></div>
+        <div class="key-div box">
+            <input type="text" class="key-input"/>
+            <div class="what-key"></div>
+            <div>keyCode : 
+                <span class="key-code key"></span>
+            </div>
+            <div>keyEvent : 
+                <span class="key-event key"></span>
+            </div>
+        </div>
+        <div class="extends-div"></div>
+        <div class="extends-div"></div>
+        <div class="extends-div"></div>
+
+        <div class="scroll-div"></div>
+
+
+        <script>
+            const mouseBox = document.querySelector('.mouse-div');
+
+            /**
+             *  mousedown: 다른 요소에서 마우스를 누른 상태에서 해당 요소로 이동 후 계속 누른 상태를 유지해도 적용되지 않음.
+             *  mouseup: 다른 요소에서 마우스를 누르고 있는 상태에서 해당 요소로 와서 마우스 버튼을 땠을 경우도 해당. (드래그)
+             *  
+            */
+            mouseBox.addEventListener('mousedown', e=> e.target.innerHTML = `Mouse Down`);
+            mouseBox.addEventListener('mouseup', e=> e.target.innerHTML = `Mouse Up`);
+
+            mouseBox.addEventListener('mouseover', e=> e.target.innerHTML = `Mouse Over`);            
+            mouseBox.addEventListener('mouseout', e=> e.target.innerHTML = `Mouse Out`);
+
+            /*
+                keydown: 모든 키에 대해 입력 가능. (keypress 완벽대체)
+                이벤트 순서: keydown -> keypress -> keyup
+            */
+            const whatKey = document.querySelector('.what-key');
+            const keyInput = document.querySelector('.key-input');
+            const keyCodea = document.querySelector('.key-code');
+            const keyEvent = document.querySelector('.key-event');
+
+            keyInput.addEventListener('keyup', e => {
+                whatKey.textContent = `Keyup Event`;
+
+                const keyCode = e.keyCode;
+                keyCodea.innerHTML = keyCode;
+
+                if(keyCode == 13){
+                    keyEvent.textContent = `Enter Key pressed at keyUp Event !`;
+                } else if(keyCode == 8){
+                    keyEvent.textContent = `BackSpace Key pressed at keyUp Event !`;
+                } else {
+                    keyEvent.textContent = `keyUp Event !`;
+                }
+            });
+
+            keyInput.addEventListener('keydown', e => {
+                whatKey.textContent = `Keydown Event`;
+
+                const keyCode = e.keyCode;
+                keyCodea.innerHTML = keyCode;
+
+                if(keyCode == 13){
+                    keyEvent.textContent = `Enter Key pressed at keydown Event !`;
+                } else if(keyCode == 8){
+                    keyEvent.textContent = `BackSpace Key pressed at keydown Event !`;
+                } else {
+                    keyEvent.textContent = `keydown Event !`;
+                }
+            });
+
+            /*
+                스크롤은 대부분 브라우저 레벨에서 수행되므로 window객체에 대해 정의.
+            */
+           window.addEventListener('scroll', e => {
+                // scrollBar y-coordinate
+                const scrollTop = window.scrollY;
+
+                // browser Height
+                const windowHeight = window.screen.availHeight;
+
+                // HTML document Height
+                const documentHeight = document.body.scrollHeight;
+
+                // infinity scroll
+                if(scrollTop + windowHeight >= documentHeight){
+                    console.log(`scroll arrived the bottom`);
+
+                    const scrollDiv = document.querySelector('.scroll-div');
+                    scrollDiv.innerHTML += `<div class='add-div'></div>`;
+                }
+
+           });
+
+        </script>
+    </body>
+</html>
