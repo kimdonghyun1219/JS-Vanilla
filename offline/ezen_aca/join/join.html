@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join us</title>
+</head>
+<body>
+    
+    <header>
+        <h1>회원가입</h1>
+    </header>
+
+    <main>
+        <form class="form" name="member_form" id="member-form">
+            <!-- id -->
+            <div class="form-group">
+                <label class="form-lab-1" for="member_id">아이디<span class="identify">*</span></label>
+                <div class="form-div-1">
+                    <input type="text" name="member_id" id="member_id" class="form-input-1"/>
+                </div>
+            </div>
+            <!-- pwd -->
+            <div class="form-group">
+                <label class="form-lab-1" for="member_pwd">비밀번호<span class="identify">*</span></label>
+                <div class="form-div-1">
+                    <input type="text" name="member_pwd" id="member_pwd" class="form-input-1"/>
+                </div>
+            </div>
+            <!-- pwd reply -->
+            <div class="form-group">
+                <label class="form-lab-1" for="member_pwd_rep">비밀번호 확인<span class="identify">*</span></label>
+                <div class="form-div-1">
+                    <input type="text" name="member_pwd_rep" id="member_pwd_rep" class="form-input-1"/>
+                </div>
+            </div>
+            <!-- name -->
+            <div class="form-group">
+                <label class="form-lab-1" for="member_name">이름<span class="identify">*</span></label>
+                <div class="form-div-1">
+                    <input type="text" name="member_name" id="member_name" class="form-input-1"/>
+                </div>
+            </div>
+            <!-- email -->
+            <div class="form-group">
+                <label class="form-lab-1" for="member_email">이메일<span class="identify">*</span></label>
+                <div class="form-div-1">
+                    <input type="text" name="member_email" id="member_email" class="form-input-1"/>
+                </div>
+            </div>
+            <!-- tel -->
+            <div class="form-group">
+                <label class="form-lab-1" for="member_tel">연락처<span class="identify">*</span></label>
+                <div class="form-div-1">
+                    <input type="text" name="member_tel" id="member_tel" class="form-input-1"/>
+                </div>
+            </div>
+            <!-- gender -->
+            <div class="form-group">
+                <label class="form-lab-1">성별<span class="identify">*</span></label>
+                <div class="form-div-1">
+                    <label><input type="radio" name="gender" value="M"/>남자</label>
+                    <label><input type="radio" name="gender" value="F"/>여자</label>
+                </div>
+            </div>
+            <!-- root -->
+            <div class="form-group">
+                <label class="form-lab-1">경로<span class="identify">*</span></label>
+                <div class="form-div-1">
+                    <label><input type="checkbox" name="root" value="internet"/>인터넷</label>
+                    <label><input type="checkbox" name="root" value="friend"/>지인</label>
+                    <label><input type="checkbox" name="root" value="school"/>학교</label>
+                    <label><input type="checkbox" name="root" value="advertise"/>광고</label>
+                    <label><input type="checkbox" name="root" value="other"/>기타</label>
+                </div>
+            </div>
+             <!-- submit -->
+             <div class="form-group">                
+                <div class="form-submit">
+                    <button type="submit">가입하기</button>
+                    <button type="reset">초기화</button>
+                    <button type="button">뒤로가기</button>
+                </div>
+            </div>            
+        </form>
+    </main>
+
+    <footer>
+        Dongs page<br>
+        tel: 010-7192-1311
+    </footer>
+    <script src="./formTest.js"></script>
+</body>
+</html>
