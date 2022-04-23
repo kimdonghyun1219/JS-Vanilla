@@ -26,7 +26,7 @@ import {RequestError as rero} from '../exception/exception.js';
 */
 
 const movieURI = `http://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json`;
-const apiKey = `ae49916cca62e1d967e50e8bbfac3861`;
+const apiKey = `donghyunisverygood`;
 
 const movieQst = {
     'key' : apiKey,
