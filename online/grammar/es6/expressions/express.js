@@ -42,6 +42,10 @@ const [first,second,third] = rank; // console.log(first) => apple   나머지는
 const [red,yellow, ...color] = rank; // console.log(color) => ['orange','cherry','melon'];
 const [one,two,three,four,five,six,seven] = rank; // six,seven -> undefined
 
+console.log(first); // apple
+console.log(second); // banana
+console.log(third); // orange
+
 let intel = 'dong';
 let amd = 'hyun';
 
@@ -80,7 +84,7 @@ const coding = {
     framework : 'vue',
     tool : 'vsCode',
 }
-function printCoding({language,framework,tool}){    
+function printCoding({language,framework,tool}){ // 요소에 바로 접근    
     console.log(`${language}`);
     console.log(`${framework}`);
     console.log(`${tool}`);
