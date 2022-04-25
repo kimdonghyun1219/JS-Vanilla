@@ -34,7 +34,9 @@ const movieQst = {
     'itemPerPage' : 10
 }
 
-async function getMovieData(){
+const movieTbl = document.querySelector('.wrap-div .tb-wrap');
+
+const getMovieData = async ()=> {
 
     const ldingDiv = document.querySelector('#loading');
     ldingDiv.classList.toggle('active');
@@ -54,42 +56,49 @@ async function getMovieData(){
             const {dailyBoxOfficeList} = boxOfficeResult;
 
             const showRangeDate = boxOfficeResult.showRange;
+            const theadTitle = [`영화코드`,`순위`,`영화명`,`관람객수`,`당일판매액`,`총판매액`];
             
             const movieData = dailyBoxOfficeList.map((v,i)=>{
                 
                 const obj = {};
 
                 obj.code = v.movieCd;
-                obj.name = v.movieNm;
                 obj.rank = v.rank;
+                obj.name = v.movieNm;
                 obj.audienceCount = v.audiCnt;
                 obj.salesAmout = v.salesAmt;
                 obj.salesTotal = v.salesAcc;
 
                 return obj;
             });
+            console.log(movieData);
 
-            const viewDiv = document.querySelector('.view-div');
-            const cUl = document.createElement('ul');            
+            const theadadd = document.createElement('thead');
+            const tbodyadd = document.createElement('tbody');
             
-            movieData.forEach(v=>{
-                const cli = document.createElement('li');                      
-                
-                const item = `
-                    코드 : ${v.code} <br>
-                    영화명 : ${v.name} <br>
-                    영화순위 : ${v.rank} <br>
-                    해당요일 관람객 수 : ${v.audienceCount} <br>
-                    해당요일 판매액 : ${v.salesAmout} <br>
-                    총 판매액 : ${v.salesTotal} <br>
-                `;
-                
-                cli.innerHTML = item;
-                cli.classList.add('view', 'li-remove');
-                
-                cUl.appendChild(cli);
+            theadTitle.forEach(v=>{
+                const thadd = document.createElement('th');            
+                thadd.textContent = v;
+                theadadd.appendChild(thadd);
             });
-            viewDiv.appendChild(cUl);
+            movieTbl.appendChild(theadadd);
+            
+            // Get object keys array
+            const firstObj = movieData[0];
+            const objKeys = Object.keys(firstObj);           
+                       
+            movieData.forEach(v=>{
+                const tradd = document.createElement('tr');
+                objKeys.forEach(val=>{
+                    const tdadd = document.createElement('td');
+                    tdadd.textContent = v[val];
+                    const searchValue = document.querySelector('#movie-search').value;
+                    tdadd.innerHTML = overlapWord(searchValue, v[val]);
+                    tradd.appendChild(tdadd);
+                });
+                tbodyadd.appendChild(tradd);
+            });
+            movieTbl.appendChild(tbodyadd);            
         }
 
     }catch(error){
@@ -99,11 +108,19 @@ async function getMovieData(){
     }
 }
 
-const mvGetDataBtn = document.querySelector('#mv-get-btn');
-
-mvGetDataBtn.addEventListener('click', ()=>{
+const searchBtn = document.querySelector('#search-btn');
+searchBtn.addEventListener('click', ()=>{
     getMovieData();
 });
 
+const searchInput = document.querySelector('#movie-search');
+searchInput.addEventListener('keydown', e=>{
+    if(e.keyCode === 13){
+        searchBtn.click();
+    }
+});
 
-
+function overlapWord(searchWord, value){
+    const regExp = new RegExp(searchWord,'g');
+    return value.replace(regExp, `<span class='highlight'> ${searchWord} </span>`);
+}
