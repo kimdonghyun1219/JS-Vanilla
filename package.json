@@ -1,0 +1,22 @@
+{
+  "name": "dongjs",
+  "version": "1.0.0",
+  "description": "nodejs practice",
+  "main": "index.js",
+  "scripts": {
+    "test": "good job man"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kimdonghyun1219/JS-Vanilla.git"
+  },
+  "keywords": [
+    "good"
+  ],
+  "author": "donghyun",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kimdonghyun1219/JS-Vanilla/issues"
+  },
+  "homepage": "https://github.com/kimdonghyun1219/JS-Vanilla#readme"
+}
