@@ -31,6 +31,8 @@
  *      console.log(0 || true);  => true
  *      console.log({} || 123);  => {}
  *      console.log(123 || 'good'); => 123
+ *      console.log( null || undefined); => undefined
+ *      console.log( false || NaN) => NaN
  * 
  *   우선순위: AND > OR
  */   
