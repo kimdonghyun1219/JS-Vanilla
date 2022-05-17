@@ -21,7 +21,7 @@
  * 
  *   AND:
  *      왼쪽값이 true면 오른쪽 값을 리턴, 왼쪽값이 false면 왼쪽값을 리턴.
- *      console.log("good","apple"); => apple
+ *      console.log("good","apple"); => good apple
  *      console.log(true && false);  => false
  *      console.log('0' && NaN); => NaN
  *      console.log(null && undefined); => null
@@ -30,6 +30,7 @@
  *      왼쪽값이 true면 왼쪽값을 리턴, 왼쪽값이 false면 오른쪽값을 리턴.
  *      console.log(0 || true);  => true
  *      console.log({} || 123);  => {}
+ *      console.log(123 || 'good'); => 123
  * 
  *   우선순위: AND > OR
  */   
