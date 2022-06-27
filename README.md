@@ -1,2 +1,4 @@
 # JS-Vanilla
-Vanilla JS record
+### category
+   - grammar  
+   - web-develop    
